@@ -51,13 +51,14 @@ header {
 .main-logo-container {
     display: flex;
     justify-content: center; /* Center logo within its container */
-    flex-grow: 1; /* Allow it to take available space */
+    /* flex-grow: 1; /* Removed to prevent undesired stretching */ */
 }
 
 .main-header-logo {
-    height: 100px; /* Make it big */
+    height: 80px; /* Restore original height */
     width: auto;
-    filter: drop-shadow(0 0 10px #00ffff) drop-shadow(0 0 20px rgba(0, 255, 255, 0.4)); /* Prominent glow */
+    opacity: 0.5; /* Restore original opacity */
+    filter: drop-shadow(0 0 5px #00ffff); /* Restore original subtle glow */
     transition: opacity 0.3s ease-in-out;
 }
 .main-header-logo:hover {
