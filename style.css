@@ -258,38 +258,6 @@ p {
 }
 
 
-/* NFT Gallery section */
-.nft-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Smaller previews */
-    gap: 20px;
-}
-
-.nft-item {
-    background-color: #1a1a1a;
-    border: 1px solid #00ffff;
-    padding: 1rem;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.nft-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 25px #ff00ff, 0 0 40px #ff00ff;
-}
-
-.nft-item img {
-    width: 100%;
-    border-radius: 0;
-    border: none;
-    margin-bottom: 1rem;
-}
-
-.nft-item p {
-    font-size: 0.8rem;
-    text-align: center;
-    margin: 0;
-}
-
 /* Supported By Section */
 .logos {
     display: flex;
@@ -366,11 +334,17 @@ p {
     gap: 30px;
 }
 
-.team-member {
+.team-member-clickable {
+    cursor: pointer; /* Indicate clickability */
     background-color: #0d0d0d;
     border: 1px solid #ff00ff;
     padding: 2rem;
     text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.team-member-clickable:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
 }
 
 .team-member img {
@@ -391,12 +365,6 @@ p {
     font-size: 1rem;
     color: #00ffff; /* Cyan title */
     margin-bottom: 1rem;
-}
-
-.team-member .bio {
-    font-size: 0.9rem;
-    color: #c0c0c0;
-    line-height: 1.6;
 }
 
 /* Footer */
@@ -523,282 +491,36 @@ footer p {
     transition: color 0.3s, transform 0.3s;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .close-button:hover,
-
-
-
-
-
-
-
 .close-button:focus {
-
-
-
-
-
-
-
     color: #ffff00;
-
-
-
-
-
-
-
     text-decoration: none;
-
-
-
-
-
-
-
     cursor: pointer;
-
-
-
-
-
-
-
     transform: scale(1.1);
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Bio Modal Specific Styles (reusing modal, modal-content, close-button) */
-
-
-
-
-
-
-
 #bio-modal .modal-content {
-
-
-
-
-
-
-
     max-width: 600px; /* Adjust size for bio modal */
-
-
-
-
-
-
-
     padding: 30px;
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #bio-modal h2 {
-
-
-
-
-
-
-
     font-size: 2rem;
-
-
-
-
-
-
-
     text-align: center;
-
-
-
-
-
-
-
     margin-bottom: 1rem;
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #bio-modal .title {
-
-
-
-
-
-
-
     font-size: 1.1rem;
-
-
-
-
-
-
-
     color: #00ffff;
-
-
-
-
-
-
-
     text-align: center;
-
-
-
-
-
-
-
     margin-bottom: 1.5rem;
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #bio-modal p {
-
-
-
-
-
-
-
     font-size: 0.95rem;
-
-
-
-
-
-
-
     line-height: 1.7;
-
-
-
-
-
-
-
     text-align: left;
-
-
-
-
-
-
-
     color: #c0c0c0;
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
