@@ -1,4 +1,3 @@
-
 body {
     font-family: 'Orbitron', 'Rajdhani', 'Courier New', Courier, monospace;
     margin: 0;
@@ -27,35 +26,32 @@ header {
     background-color: rgba(13, 13, 13, 0.8); /* Semi-transparent black */
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    padding: 0.5rem 0;
+    padding: 20px 0;
     border-bottom: 1px solid #00ffff; /* Cyan accent */
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 999;
+    text-align: center;
 }
 
 nav {
     display: flex;
-    justify-content: center; /* Center nav content */
+    flex-direction: column;
     align-items: center;
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    letter-spacing: 0.1em;
-}
-
-.logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
 .logo img {
-    height: 80px; /* Bigger logo */
+    height: 100px; /* Bigger logo */
     width: auto;
     transition: transform 0.3s;
+    mix-blend-mode: screen; /* Blend mode for merging with background */
+    opacity: 0.9;
+    margin-bottom: 15px;
 }
 
 nav ul {
@@ -64,12 +60,11 @@ nav ul {
     padding: 0;
     display: flex;
     align-items: center;
-    width: 100%;
     justify-content: center; /* Center nav links */
 }
 
 nav ul li {
-    margin: 0 20px;
+    margin: 0 25px;
 }
 
 nav ul li a {
@@ -98,7 +93,6 @@ nav ul li a:hover {
     box-shadow: 0 0 10px #00ffff;
     transition: all 0.3s ease-in-out;
     letter-spacing: 0.1em;
-    margin-left: auto; /* Push to the far right */
 }
 
 .glowing-button:hover {
@@ -121,7 +115,7 @@ nav ul li a:hover {
     text-align: center;
     position: relative;
     overflow: hidden;
-    padding: 90px 20px 20px;
+    padding-top: 180px; /* Adjust for taller header */
     background: #0d0d0d url('images/collage2.jpg') no-repeat center center;
     background-size: cover;
     border-bottom: 2px solid #00ffff;
@@ -302,13 +296,29 @@ p {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: 20px;
+}
+
+.logo-item {
+    height: 60px; /* Standardized height for the container */
+    width: 160px; /* Standardized width for the container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: rgba(255,255,255,0.05);
+    border: 1px solid #00ffff;
+    transition: background-color 0.3s;
+}
+.logo-item:hover {
+    background-color: rgba(255,255,255,0.1);
 }
 
 .logos img {
-    height: 40px; /* Standardized height */
-    width: 150px; /* Standardized width */
-    object-fit: contain; /* Maintain aspect ratio within the box */
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
     opacity: 0.7;
     transition: opacity 0.3s;
 }
@@ -423,22 +433,25 @@ footer p {
 }
 
 /* Responsiveness */
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        gap: 15px;
+@media (max-width: 900px) {
+    nav ul {
+        display: none; /* Hide nav links on smaller screens, could be a toggle menu */
     }
-    .logo {
-        position: static;
-        transform: none;
-        margin-bottom: 15px;
+}
+
+
+@media (max-width: 768px) {
+    .header {
+        padding: 10px 0;
+    }
+    .logo img {
+        height: 80px;
+        margin-bottom: 10px;
     }
     nav ul {
+        display: flex; /* Make sure they're visible for this breakpoint */
         flex-direction: column;
         gap: 10px;
-    }
-    .glowing-button {
-        margin-left: 0;
     }
     .hero-title {
         font-size: 2.5rem;
