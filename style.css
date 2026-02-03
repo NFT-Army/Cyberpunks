@@ -55,10 +55,10 @@ header {
 }
 
 .main-header-logo {
-    height: 80px; /* Restore original height */
+    height: 150px; /* Make it much bigger */
     width: auto;
-    opacity: 0.5; /* Restore original opacity */
-    filter: drop-shadow(0 0 5px #00ffff); /* Restore original subtle glow */
+    opacity: 1; /* Make it fully visible */
+    filter: drop-shadow(0 0 15px #ff00ff) drop-shadow(0 0 30px rgba(255, 0, 255, 0.6)); /* Prominent magenta glow for impact */
     transition: opacity 0.3s ease-in-out;
 }
 .main-header-logo:hover {
