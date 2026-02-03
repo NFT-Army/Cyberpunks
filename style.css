@@ -39,7 +39,8 @@ header {
 
 nav {
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* Change to row to align items horizontally */
+    justify-content: space-between; /* Distribute items with space between them */
     align-items: center;
     width: 90%;
     max-width: 1200px;
@@ -47,19 +48,18 @@ nav {
 }
 
 .header-logo {
-    /* Inherit styles from old .header-text-logo for headline appearance */
-    font-family: 'Orbitron', monospace; /* Use a distinct font for impact */
-    font-size: 3.5rem; /* Slightly smaller than old header text logo, but still prominent */
-    font-weight: bold;
-    color: #f0f0f0;
-    text-shadow: 0 0 20px #ff00ff, 0 0 35px #ff00ff; /* Stronger magenta glow */
-    margin-bottom: 0; /* Adjust margin as it's now in the nav */
-    line-height: 1; /* Adjust line height */
-    letter-spacing: 0.15em;
-    padding-top: 0; /* No padding needed */
-    display: inline-block; /* Allow spacing */
-    height: auto; /* Allow natural height */
-    max-width: none; /* Remove max-width constraint */
+    height: 80px; /* Fixed height for the logo */
+    width: auto; /* Maintain aspect ratio */
+    opacity: 0.5; /* More in the background */
+    transition: opacity 0.3s ease-in-out;
+    vertical-align: middle; /* Align with other nav items if any */
+    margin-bottom: 0;
+    margin-top: 0;
+    filter: drop-shadow(0 0 5px #00ffff); /* Subtle glow */
+}
+
+.header-logo:hover {
+    opacity: 0.8; /* Slightly more prominent on hover */
 }
 
 /* Ensure .logo in header handles spacing correctly if needed */
@@ -75,8 +75,8 @@ nav ul {
     padding: 0;
     display: flex;
     align-items: center;
-    justify-content: center; /* Center nav links */
-    margin-top: 20px; /* Space from the big logo */
+    /* justify-content: center; /* Removed as space-between on nav handles distribution */ */
+    /* margin-top: 20px; /* Removed for row layout */ */
 }
 
 nav ul li {
@@ -487,14 +487,16 @@ footer p {
     .header {
         padding: 10px 0;
     }
-    .logo img {
-        height: 80px;
-        margin-bottom: 10px;
+    .header-logo { /* Targeting the header logo specifically */
+        height: 60px; /* Smaller for mobile */
+        margin-bottom: 0; /* No margin bottom */
+    }
+    nav { /* Override nav to be column on small screens */
+        flex-direction: column;
+        gap: 10px; /* Space between logo, nav links (if visible) and button */
     }
     nav ul {
-        display: flex; /* Make sure they're visible for this breakpoint */
-        flex-direction: column;
-        gap: 10px;
+        display: none; /* Hide nav links on very small screens */
     }
     .hero-title {
         font-size: 2.5rem;
