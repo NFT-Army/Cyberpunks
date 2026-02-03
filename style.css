@@ -27,10 +27,10 @@ header {
     background-color: rgba(13, 13, 13, 0.8); /* Semi-transparent black */
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    padding: 0.8rem 2%;
+    padding: 0.5rem 0;
     border-bottom: 1px solid #00ffff; /* Cyan accent */
     position: fixed;
-    width: 96%;
+    width: 100%;
     top: 0;
     left: 0;
     z-index: 999;
@@ -38,20 +38,24 @@ header {
 
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Center nav content */
     align-items: center;
-    width: 100%;
+    width: 90%;
+    max-width: 1200px;
     margin: 0 auto;
     letter-spacing: 0.1em;
 }
 
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 .logo img {
-    height: 60px; /* Adjusted size */
+    height: 80px; /* Bigger logo */
     width: auto;
     transition: transform 0.3s;
-    border-radius: 0;
-    border: none;
-    box-shadow: none;
 }
 
 nav ul {
@@ -60,10 +64,12 @@ nav ul {
     padding: 0;
     display: flex;
     align-items: center;
+    width: 100%;
+    justify-content: center; /* Center nav links */
 }
 
 nav ul li {
-    margin-left: 35px;
+    margin: 0 20px;
 }
 
 nav ul li a {
@@ -92,7 +98,7 @@ nav ul li a:hover {
     box-shadow: 0 0 10px #00ffff;
     transition: all 0.3s ease-in-out;
     letter-spacing: 0.1em;
-    margin-left: 30px;
+    margin-left: auto; /* Push to the far right */
 }
 
 .glowing-button:hover {
@@ -189,6 +195,7 @@ p {
     line-height: 1.7;
     margin-bottom: 1rem;
     color: #c0c0c0; /* Slightly darker text for paragraphs */
+    text-transform: none; /* Normal case for paragraphs */
 }
 
 /* The Army section */
@@ -300,8 +307,8 @@ p {
 
 .logos img {
     height: 40px; /* Standardized height */
-    width: auto;
-    max-width: 150px; /* Max width to prevent very wide logos from dominating */
+    width: 150px; /* Standardized width */
+    object-fit: contain; /* Maintain aspect ratio within the box */
     opacity: 0.7;
     transition: opacity 0.3s;
 }
@@ -336,22 +343,24 @@ p {
     color: #ff00ff;
 }
 
+.glowing-text {
+    color: #00ffff;
+    text-shadow: 0 0 8px #00ffff, 0 0 16px #00ffff;
+}
+
 
 /* Team Section */
 .team-members {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
 }
 
 .team-member {
-    flex: 0 0 auto;
-    width: 220px;
     background-color: #0d0d0d;
     border: 1px solid #ff00ff;
-    padding: 1.5rem;
+    padding: 2rem;
+    text-align: center;
 }
 
 .team-member img {
@@ -364,13 +373,20 @@ p {
 }
 
 .team-member h3 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: #f0f0f0;
 }
 
-.team-member p {
-    font-size: 0.9rem;
+.team-member .title {
+    font-size: 1rem;
     color: #00ffff; /* Cyan title */
+    margin-bottom: 1rem;
+}
+
+.team-member .bio {
+    font-size: 0.9rem;
+    color: #c0c0c0;
+    line-height: 1.6;
 }
 
 /* Footer */
@@ -411,6 +427,18 @@ footer p {
     nav {
         flex-direction: column;
         gap: 15px;
+    }
+    .logo {
+        position: static;
+        transform: none;
+        margin-bottom: 15px;
+    }
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .glowing-button {
+        margin-left: 0;
     }
     .hero-title {
         font-size: 2.5rem;
