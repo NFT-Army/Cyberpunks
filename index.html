@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +20,7 @@
                 <li><a href="#team">TEAM</a></li>
                 <li><a href="#" id="whitepaper-link">WHITEPAPER</a></li>
             </ul>
+            <button class="glowing-button" id="mint-now-nav">CONNECT WALLET</button>
         </nav>
     </header>
 
@@ -84,13 +86,13 @@
         <section class="content-section" id="supported-by">
             <h2>─── SUPPORTED BY ───</h2>
             <div class="logos">
-                <div class="logo-item"><img src="images/OpenSea-Full-Logo (light).svg" alt="OpenSea Logo"></div>
-                <div class="logo-item"><img src="images/metamask-seeklogo.svg" alt="MetaMask Logo"></div>
-                <div class="logo-item"><img src="images/coinbase-new-2021-seeklogo.svg" alt="Coinbase Logo"></div>
-                <div class="logo-item"><img src="images/WalletConnect.svg" alt="WalletConnect Logo"></div>
-                <div class="logo-item"><img src="images/Binance-Logo.wine.svg" alt="Binance Logo"></div>
-                <div class="logo-item"><img src="images/Trust Wallet New 2023.svg" alt="Trust Wallet Logo"></div>
-                <div class="logo-item"><img src="images/LEDGER Wallet Logo Vector.svg" alt="Ledger Wallet Logo"></div>
+                <div class="logo-item"><a href="#" target="_blank"><img src="images/OpenSea-Full-Logo (light).svg" alt="OpenSea Logo"></a></div>
+                <div class="logo-item"><a href="#" target="_blank"><img src="images/metamask-seeklogo.svg" alt="MetaMask Logo"></a></div>
+                <div class="logo-item"><a href="#" target="_blank"><img src="images/coinbase-new-2021-seeklogo.svg" alt="Coinbase Logo"></a></div>
+                <div class="logo-item"><a href="#" target="_blank"><img src="images/WalletConnect.svg" alt="WalletConnect Logo"></a></div>
+                <div class="logo-item"><a href="#" target="_blank"><img src="images/Binance-Logo.wine.svg" alt="Binance Logo"></a></div>
+                <div class="logo-item"><a href="#" target="_blank"><img src="images/Trust Wallet New 2023.svg" alt="Trust Wallet Logo"></a></div>
+                <div class="logo-item"><a href="#" target="_blank"><img src="images/LEDGER Wallet Logo Vector.svg" alt="Ledger Wallet Logo"></a></div>
             </div>
         </section>
 
@@ -122,29 +124,33 @@
         <section class="content-section" id="team">
             <h2>─── THE ARCHITECTS ───</h2>
             <div class="team-members">
-                <div class="team-member">
-                    <img src="images/KaiLi.jpg" alt="Kai Li">
-                    <h3>Kai Li</h3>
-                    <p class="title">Founder & Vision</p>
-                    <p class="bio">A former systems architect for a top-tier cybersecurity firm, Kai witnessed the creeping control of centralized entities over digital life. He founded the Cyberpunks 2026 army as an act of rebellion, envisioning a world where true digital ownership is not a privilege, but a right.</p>
+                <div class="team-member-clickable" data-member="kaili">
+                    <div class="team-member">
+                        <img src="images/KaiLi.jpg" alt="Kai Li">
+                        <h3>Kai Li</h3>
+                        <p class="title">Founder & Vision</p>
+                    </div>
                 </div>
-                <div class="team-member">
-                    <img src="images/Anja.jpg" alt="Anya Sharma">
-                    <h3>Anya Sharma</h3>
-                    <p class="title">Art Director</p>
-                    <p class="bio">Anya is a world-renowned digital artist who cut her teeth in the underground art scene of Neo-Kyoto. Her work explores the intersection of humanity and technology, and her vision is the driving force behind the stunning aesthetics of the Cyberpunks army.</p>
+                <div class="team-member-clickable" data-member="anyasharma">
+                    <div class="team-member">
+                        <img src="images/Anja.jpg" alt="Anya Sharma">
+                        <h3>Anya Sharma</h3>
+                        <p class="title">Art Director</p>
+                    </div>
                 </div>
-                <div class="team-member">
-                    <img src="images/Jax.jpg" alt="Jax Vance">
-                    <h3>Jax Vance</h3>
-                    <p class="title">Lead Developer</p>
-                    <p class="bio">Jax is a prodigy of the blockchain. He wrote his first smart contract at the age of 16 and has been a passionate advocate for decentralization ever since. He is the architect of the secure, gas-efficient smart contract that powers the Cyberpunks army.</p>
+                <div class="team-member-clickable" data-member="jaxvance">
+                    <div class="team-member">
+                        <img src="images/Jax.jpg" alt="Jax Vance">
+                        <h3>Jax Vance</h3>
+                        <p class="title">Lead Developer</p>
+                    </div>
                 </div>
-                <div class="team-member">
-                    <img src="images/elara.jpg" alt="Elara Reyes">
-                    <h3>Elara Reyes</h3>
-                    <p class="title">Community Lead</p>
-                    <p class="bio">Elara is a veteran community builder who has managed some of the largest and most passionate communities in the NFT space. She is dedicated to fostering a vibrant, inclusive, and empowered community for the Cyberpunks army.</p>
+                <div class="team-member-clickable" data-member="elarareyes">
+                    <div class="team-member">
+                        <img src="images/elara.jpg" alt="Elara Reyes">
+                        <h3>Elara Reyes</h3>
+                        <p class="title">Community Lead</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -205,24 +211,218 @@
         </div>
     </div>
 
+    <!-- Team Bio Modal -->
+    <div id="bio-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="bio-close-button">&times;</span>
+            <h2 id="bio-modal-name"></h2>
+            <p class="title" id="bio-modal-title"></p>
+            <p id="bio-modal-text"></p>
+        </div>
+    </div>
+
     <script>
         // Whitepaper Modal Script
-        const modal = document.getElementById("whitepaper-modal");
-        const link = document.getElementById("whitepaper-link");
-        const closeButton = document.getElementsByClassName("close-button")[0];
+        const whitepaperModal = document.getElementById("whitepaper-modal");
+        const whitepaperLink = document.getElementById("whitepaper-link");
+        const whitepaperCloseButton = whitepaperModal.querySelector(".close-button");
 
-        link.onclick = function(e) {
+        whitepaperLink.onclick = function(e) {
             e.preventDefault();
-            modal.style.display = "block";
+            whitepaperModal.style.display = "block";
         }
 
-        closeButton.onclick = function() {
-            modal.style.display = "none";
+        whitepaperCloseButton.onclick = function() {
+            whitepaperModal.style.display = "none";
         }
 
         window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
+            if (event.target == whitepaperModal) {
+                whitepaperModal.style.display = "none";
+            }
+        }
+
+        // Team Bio Modal Script
+        const bioModal = document.getElementById("bio-modal");
+        const bioCloseButton = document.getElementById("bio-close-button");
+        const bioModalName = document.getElementById("bio-modal-name");
+        const bioModalTitle = document.getElementById("bio-modal-title");
+        const bioModalText = document.getElementById("bio-modal-text");
+
+        const teamMembersData = {
+            "kaili": {
+                name: "Kai Li",
+                title: "Founder & Vision",
+                bio: "A former systems architect for a top-tier cybersecurity firm, Kai witnessed the creeping control of centralized entities over digital life. He founded the Cyberpunks 2026 army as an act of rebellion, envisioning a world where true digital ownership is not a privilege, but a right."
+            },
+            "anyasharma": {
+                name: "Anya Sharma",
+                title: "Art Director",
+                bio: "Anya is a world-renowned digital artist who cut her teeth in the underground art scene of Neo-Kyoto. Her work explores the intersection of humanity and technology, and her vision is the driving force behind the stunning aesthetics of the Cyberpunks army."
+            },
+            "jaxvance": {
+                name: "Jax Vance",
+                title: "Lead Developer",
+                bio: "Jax is a prodigy of the blockchain. He wrote his first smart contract at the age of 16 and has been a passionate advocate for decentralization ever since. He is the architect of the secure, gas-efficient smart contract that powers the Cyberpunks army."
+            },
+            "elarareyes": {
+                name: "Elara Reyes",
+                title: "Community Lead",
+                bio: "Elara is a veteran community builder who has managed some of the largest and most passionate communities in the NFT space. She is dedicated to fostering a vibrant, inclusive, and empowered community for the Cyberpunks army."
+            }
+        };
+
+        document.querySelectorAll(".team-member-clickable").forEach(memberDiv => {
+            memberDiv.style.cursor = "pointer"; // Indicate clickability
+            memberDiv.addEventListener("click", function() {
+                const memberId = this.dataset.member;
+                const member = teamMembersData[memberId];
+                if (member) {
+                    bioModalName.textContent = member.name;
+                    bioModalTitle.textContent = member.title;
+                    bioModalText.textContent = member.bio;
+                    bioModal.style.display = "block";
+                }
+            });
+        });
+
+        bioCloseButton.onclick = function() {
+            bioModal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == bioModal) {
+                bioModal.style.display = "none";
+            }
+        }
+    </script>
+    <!-- Whitepaper Modal -->
+    <div id="whitepaper-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>WHITEPAER: A NEW DIGITAL REBELLION</h2>
+
+            <h3>1. Introduction: The Dawn of the Cyber-Renaissance</h3>
+            <p>Welcome to Cyberpunks 2026, a world on the brink of a new digital renaissance. In the sprawling, neon-drenched metropolis of a future not so far away, power is no longer held by governments or corporations, but by those who control the data. The Cyberpunks 2026 NFT Army is more than just a collection of digital art; it is a movement, a rebellion against the centralized forces that seek to control our digital lives.</p>
+            <p>This whitepaper outlines the vision, technology, and roadmap for the Cyberpunks 2026 NFT Army, a project that will redefine the boundaries of digital ownership and community-driven storytelling.</p>
+
+            <h3>2. The Lore: Chronicles of a Digital Uprising</h3>
+            <p>The year is 2026. The world is a tapestry of gleaming chrome and grimy alleyways, where megacorporations have become the new gods, and data is the most valuable currency. In the shadows of this world, a scattered resistance is brewing. They are the outcasts, the rebels, the hackers, the data-weavers - they are the Cyberpunks.</p>
+            <p>The 10,000 Cyberpunks in this collection are not just PFPs; they are characters in a living, breathing story. Each NFT is a unique identity, a soldier in the digital rebellion. From the stealthy Ghosts who navigate the datastreams unseen, to the Chrome-Witches who bend the code to their will, every Cyberpunk has a role to play in the fight for a decentralized future.</p>
+
+            <h3>3. The Art: A Vision of the Future</h3>
+            <p>The Cyberpunks 2026 NFT Army is a collection of 10,000 unique, algorithmically generated digital artworks. Each Cyberpunk is a 1-of-1 piece, created from hundreds of possible traits, including cybernetic enhancements, futuristic fashion, and unique backgrounds. The art style is a fusion of classic cyberpunk aesthetics with a modern, high-fidelity rendering, creating a collection that is both nostalgic and forward-looking.</p>
+
+            <h3>4. Technical Specifications: The Foundations of the Rebellion</h3>
+            <ul>
+                <li><strong>Platform:</strong> Ethereum Blockchain</li>
+                <li><strong>Token Standard:</strong> ERC-721</li>
+                <li><strong>Total Supply:</strong> 10,000</li>
+                <li><strong>Smart Contract:</strong> Audited for security and gas efficiency.</li>
+                <li><strong>Metadata:</strong> Stored on IPFS to ensure permanence and decentralization.</li>
+            </ul>
+
+            <h3>5. The Roadmap: A Blueprint for Revolution</h3>
+            <ul>
+                <li><strong>Q1 2026: The Uprising Begins</strong> - Public Mint of the 10,000 Cyberpunks 2026 NFTs. Establishment of the Cyberpunks DAO.</li>
+                <li><strong>Q2 2026: Forging the Arsenal</strong> - Launch of the $CYBER token and staking rewards. Airdrop of cybernetic companions for Cyberpunk holders.</li>
+                <li><strong>Q3 2026: Conquering the Metaverse</strong> - Acquisition of a large plot of land in a major metaverse. Launch of the Cyberpunks 2026 virtual headquarters.</li>
+                <li><strong>Q4 2026: Project Chimera</strong> - The beginning of a new, community-driven chapter in the Cyberpunks saga. The future is in your hands.</li>
+            </ul>
+
+            <h3>6. The Architects: The Team Behind the Uprising</h3>
+            <p>The Cyberpunks 2026 project is led by a team of experienced artists, developers, and community builders who are passionate about NFTs and the decentralized future.</p>
+            <ul>
+                <li>Kai Li: Founder & Vision</li>
+                <li>Anya Sharma: Art Director</li>
+                <li>Jax Vance: Lead Developer</li>
+                <li>Elara Reyes: Community Lead</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Team Bio Modal -->
+    <div id="bio-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="bio-close-button">&times;</span>
+            <h2 id="bio-modal-name"></h2>
+            <p class="title" id="bio-modal-title"></p>
+            <p id="bio-modal-text"></p>
+        </div>
+    </div>
+
+    <script>
+        // Whitepaper Modal Script
+        const whitepaperModal = document.getElementById("whitepaper-modal");
+        const whitepaperLink = document.getElementById("whitepaper-link");
+        const whitepaperCloseButton = whitepaperModal.querySelector(".close-button");
+
+        whitepaperLink.onclick = function(e) {
+            e.preventDefault();
+            whitepaperModal.style.display = "block";
+        }
+
+        whitepaperCloseButton.onclick = function() {
+            whitepaperModal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == whitepaperModal) {
+                whitepaperModal.style.display = "none";
+            }
+        }
+
+        // Team Bio Modal Script
+        const bioModal = document.getElementById("bio-modal");
+        const bioCloseButton = document.getElementById("bio-close-button");
+        const bioModalName = document.getElementById("bio-modal-name");
+        const bioModalTitle = document.getElementById("bio-modal-title");
+        const bioModalText = document.getElementById("bio-modal-text");
+
+        const teamMembersData = {
+            "kaili": {
+                name: "Kai Li",
+                title: "Founder & Vision",
+                bio: "A former systems architect for a top-tier cybersecurity firm, Kai witnessed the creeping control of centralized entities over digital life. He founded the Cyberpunks 2026 army as an act of rebellion, envisioning a world where true digital ownership is not a privilege, but a right."
+            },
+            "anyasharma": {
+                name: "Anya Sharma",
+                title: "Art Director",
+                bio: "Anya is a world-renowned digital artist who cut her teeth in the underground art scene of Neo-Kyoto. Her work explores the intersection of humanity and technology, and her vision is the driving force behind the stunning aesthetics of the Cyberpunks army."
+            },
+            "jaxvance": {
+                name: "Jax Vance",
+                title: "Lead Developer",
+                bio: "Jax is a prodigy of the blockchain. He wrote his first smart contract at the age of 16 and has been a passionate advocate for decentralization ever since. He is the architect of the secure, gas-efficient smart contract that powers the Cyberpunks army."
+            },
+            "elarareyes": {
+                name: "Elara Reyes",
+                title: "Community Lead",
+                bio: "Elara is a veteran community builder who has managed some of the largest and most passionate communities in the NFT space. She is dedicated to fostering a vibrant, inclusive, and empowered community for the Cyberpunks army."
+            }
+        };
+
+        document.querySelectorAll(".team-member-clickable").forEach(memberDiv => {
+            memberDiv.style.cursor = "pointer"; // Indicate clickability
+            memberDiv.addEventListener("click", function() {
+                const memberId = this.dataset.member;
+                const member = teamMembersData[memberId];
+                if (member) {
+                    bioModalName.textContent = member.name;
+                    bioModalTitle.textContent = member.title;
+                    bioModalText.textContent = member.bio;
+                    bioModal.style.display = "block";
+                }
+            });
+        });
+
+        bioCloseButton.onclick = function() {
+            bioModal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == bioModal) {
+                bioModal.style.display = "none";
             }
         }
     </script>
