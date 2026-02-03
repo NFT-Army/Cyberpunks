@@ -40,7 +40,7 @@ Your goal is to become a ghost in the machine. No name, no trace. Here’s how:
 
 ### Part 2: Promotional Content
 
-Remember to replace `https://freemintevent.netlify.app` with your actual website link.
+Remember to replace `https://nft-army.github.io/Cyberpunks/` with your actual website link.
 
 **Twitter Content**
 
@@ -51,7 +51,7 @@ Remember to replace `https://freemintevent.netlify.app` with your actual website
     >
     > Don't miss your chance to be part of the revolution.
     >
-    > Mint here: https://freemintevent.netlify.app
+    > Mint here: https://nft-army.github.io/Cyberpunks/
     >
     > #NFT #FreeMint #NFTGiveaway #Crypto #Ethereum #Cyberpunks
 
@@ -61,7 +61,7 @@ Remember to replace `https://freemintevent.netlify.app` with your actual website
         >
         > Here's a sneak peek of some of the rare traits in our collection.
         >
-        > Mint is still FREE and LIVE at: https://freemintevent.netlify.app
+        > Mint is still FREE and LIVE at: https://nft-army.github.io/Cyberpunks/
         >
         > (Attach one of the images from your website)
 
@@ -70,14 +70,14 @@ Remember to replace `https://freemintevent.netlify.app` with your actual website
         >
         > The free mint won't last forever. Secure your piece of the future now.
         >
-        > https://freemintevent.netlify.app
+        > https://nft-army.github.io/Cyberpunks/
         >
         > #NFTCommunity #CryptoArt
 
 3.  **The Personal Touch (Direct Message Script):**
     > Hey [User's Name], I saw you're into NFTs. I'm part of the team at Cyberpunks, a new collection that's doing a free mint right now. The art is sick and the community is growing fast.
     >
-    > Thought you might want to check it out before the free mint ends. The site is https://freemintevent.netlify.app. Let me know what you think of the art!
+    > Thought you might want to check it out before the free mint ends. The site is https://nft-army.github.io/Cyberpunks/. Let me know what you think of the art!
 
 **Discord Content**
 
@@ -87,7 +87,7 @@ Remember to replace `https://freemintevent.netlify.app` with your actual website
     > You've joined us just in time. We are currently in the middle of our FREE MINT event for our genesis collection of 10,000 Cyberpunk avatars.
     >
     > **How to mint:**
-    > 1.  Go to our official website: https://freemintevent.netlify.app
+    > 1.  Go to our official website: https://nft-army.github.io/Cyberpunks/
     > 2.  Connect your wallet.
     > 3.  Approve the mint and claim your Cyberpunk!
     >
@@ -101,7 +101,7 @@ Remember to replace `https://freemintevent.netlify.app` with your actual website
     > For a limited time, you can mint a Cyberpunk NFT for **FREE** (you only pay gas).
     >
     > **Official Minting Website:**
-    > https://freemintevent.netlify.app
+    > https://nft-army.github.io/Cyberpunks/
     >
     > **Collection Details:**
     > *   **Supply:** 10,000 unique avatars
