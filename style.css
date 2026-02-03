@@ -46,17 +46,7 @@ nav {
     margin: 0 auto;
 }
 
-.header-text-logo {
-    font-family: 'Orbitron', monospace; /* Use a distinct font for impact */
-    font-size: 4.5rem; /* Much bigger */
-    font-weight: bold;
-    color: #f0f0f0;
-    text-shadow: 0 0 20px #ff00ff, 0 0 35px #ff00ff; /* Stronger magenta glow */
-    margin-bottom: 15px;
-    line-height: 1; /* Adjust line height */
-    letter-spacing: 0.15em;
-    padding-top: 10px; /* Some padding from the very top */
-}
+/* .header-text-logo removed as it's no longer used in the header */
 
 nav ul {
     list-style: none;
@@ -123,7 +113,7 @@ nav ul li a:hover {
     position: relative;
     overflow: hidden;
     padding-top: 250px; /* Adjust for much taller header */
-    background: #0d0d0d url('images/collage2.jpg') no-repeat center center;
+    background: #0d0d0d url('images/collage1.jpg') no-repeat center center; /* Changed to collage1.jpg as placeholder for mechanic theme */
     background-size: cover;
     border-bottom: 2px solid #00ffff;
 }
@@ -144,33 +134,21 @@ nav ul li a:hover {
 }
 
 .hero-title {
-    /* Existing styles for text, now adjusted for image container */
-    font-size: 4rem; /* Keep for general sizing context if needed, but img will override visual size */
+    /* Styles for the main headline text */
+    font-family: 'Orbitron', monospace; /* Use a distinct font for impact */
+    font-size: 4.5rem; /* Much bigger */
     font-weight: bold;
     color: #f0f0f0;
-    text-shadow: 0 0 15px #ff00ff, 0 0 25px #ff00ff; /* Magenta glow */
-    margin-bottom: 20px;
-    line-height: 1.2;
-    /* Center the image within this flex container */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 200px; /* Ensure enough space for the logo */
+    text-shadow: 0 0 20px #ff00ff, 0 0 35px #ff00ff; /* Stronger magenta glow */
+    margin-bottom: 20px; /* Adjusted margin */
+    line-height: 1; /* Adjust line height */
+    letter-spacing: 0.15em;
+    padding-top: 0; /* No padding needed for text logo */
+    display: block; /* No longer flex container for an image */
+    min-height: auto; /* No min-height for text logo */
 }
 
-.hero-title .hero-logo {
-    max-width: 80%; /* Adjust size as needed */
-    height: auto;
-    opacity: 0.7; /* Blend with background */
-    mix-blend-mode: screen; /* Experiment with blend modes for merging effect */
-    filter: drop-shadow(0 0 10px #00ffff) drop-shadow(0 0 20px #ff00ff); /* Add glowing effect */
-    transition: all 0.3s ease-in-out;
-}
-
-.hero-title .hero-logo:hover {
-    opacity: 1;
-    filter: drop-shadow(0 0 15px #00ffff) drop-shadow(0 0 30px #ff00ff);
-}
+/* Removed .hero-title .hero-logo styles as the image is no longer used */
 
 .hero-title p {
     margin: 0;
@@ -195,10 +173,10 @@ nav ul li a:hover {
     max-width: 1200px;
     margin: 5rem auto;
     padding: 3rem;
-    background-color: #1a1a1a;
-    border: 1px solid #ff00ff; /* Magenta border */
+    background-color: #1c1c1c; /* Slightly lighter dark grey */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Very subtle white border */
     border-radius: 0; /* Sharp edges */
-    box-shadow: 0 0 25px rgba(255, 0, 255, 0.3);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05), 0 0 40px rgba(255, 255, 255, 0.02); /* Subtle white glow */
 }
 
 /* All H2 headings */
@@ -247,10 +225,16 @@ p {
 }
 
 .ethereum-logo-icon {
-    height: 1.2em; /* Adjust size relative to the text */
-    vertical-align: middle; /* Align with text */
-    margin-left: 0.5em; /* Small space from text */
-    filter: drop-shadow(0 0 5px #00ffff); /* Subtle glow */
+    height: 1.3em; /* Slightly larger */
+    vertical-align: middle;
+    margin-left: 0.5em;
+    filter: drop-shadow(0 0 8px #00ffff) drop-shadow(0 0 15px rgba(0, 255, 255, 0.4)); /* Enhanced glow */
+    transition: filter 0.3s ease-in-out; /* Smooth transition for glow */
+    mix-blend-mode: multiply; /* Make white backgrounds transparent over dark background */
+}
+.ethereum-logo-icon:hover {
+    filter: drop-shadow(0 0 12px #ffff00) drop-shadow(0 0 20px rgba(255, 255, 0, 0.6)); /* Yellow glow on hover */
+    mix-blend-mode: normal; /* Reset blend mode on hover if needed for effect */
 }
 
 /* Heroes Section */
@@ -302,18 +286,21 @@ p {
 }
 
 .logo-item {
-    height: 60px; /* Standardized height for the container */
-    width: 160px; /* Standardized width for the container */
+    height: 70px; /* Slightly larger height */
+    width: 180px; /* Slightly larger width */
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
     background-color: rgba(255,255,255,0.05);
     border: 1px solid #00ffff;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease-in-out; /* Transition all properties */
 }
 .logo-item:hover {
-    background-color: rgba(255,255,255,0.1);
+    background-color: rgba(0, 255, 255, 0.15); /* More vibrant hover background */
+    border-color: #ffff00; /* Yellow border on hover */
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6); /* Add a subtle glow */
+    transform: translateY(-3px); /* Slight lift effect */
 }
 
 .logos img {
@@ -322,11 +309,14 @@ p {
     width: auto;
     height: auto;
     opacity: 0.7;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s, transform 0.3s; /* Add transform to transition */
+    mix-blend-mode: multiply; /* Make white backgrounds transparent over dark background */
 }
 
 .logos img:hover {
     opacity: 1;
+    transform: scale(1.05); /* Slight scale on hover */
+    mix-blend-mode: normal; /* Reset blend mode on hover if needed for effect */
 }
 
 
