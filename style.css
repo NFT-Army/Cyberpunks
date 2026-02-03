@@ -1,3 +1,4 @@
+
 body {
     font-family: 'Orbitron', 'Rajdhani', 'Courier New', Courier, monospace;
     margin: 0;
@@ -45,13 +46,16 @@ nav {
     margin: 0 auto;
 }
 
-.logo img {
-    height: 100px; /* Bigger logo */
-    width: auto;
-    transition: transform 0.3s;
-    mix-blend-mode: screen; /* Blend mode for merging with background */
-    opacity: 0.9;
+.header-text-logo {
+    font-family: 'Orbitron', monospace; /* Use a distinct font for impact */
+    font-size: 4.5rem; /* Much bigger */
+    font-weight: bold;
+    color: #f0f0f0;
+    text-shadow: 0 0 20px #ff00ff, 0 0 35px #ff00ff; /* Stronger magenta glow */
     margin-bottom: 15px;
+    line-height: 1; /* Adjust line height */
+    letter-spacing: 0.15em;
+    padding-top: 10px; /* Some padding from the very top */
 }
 
 nav ul {
@@ -61,6 +65,7 @@ nav ul {
     display: flex;
     align-items: center;
     justify-content: center; /* Center nav links */
+    margin-top: 20px; /* Space from the big logo */
 }
 
 nav ul li {
@@ -93,6 +98,8 @@ nav ul li a:hover {
     box-shadow: 0 0 10px #00ffff;
     transition: all 0.3s ease-in-out;
     letter-spacing: 0.1em;
+    margin-left: auto; /* Push to the far right */
+    margin-top: 15px; /* Space from nav links */
 }
 
 .glowing-button:hover {
@@ -115,7 +122,7 @@ nav ul li a:hover {
     text-align: center;
     position: relative;
     overflow: hidden;
-    padding-top: 180px; /* Adjust for taller header */
+    padding-top: 250px; /* Adjust for much taller header */
     background: #0d0d0d url('images/collage2.jpg') no-repeat center center;
     background-size: cover;
     border-bottom: 2px solid #00ffff;
