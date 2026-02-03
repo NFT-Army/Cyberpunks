@@ -34,56 +34,58 @@ header {
     top: 0;
     left: 0;
     z-index: 999;
-    text-align: center;
+    /* text-align: center; /* Removed as children will control alignment */ */
 }
 
-nav {
+/* New styles for the top part of the header (logo + button) */
+.header-top {
     display: flex;
-    flex-direction: row; /* Change to row to align items horizontally */
-    justify-content: space-between; /* Distribute items with space between them */
+    justify-content: space-between;
     align-items: center;
     width: 90%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto 10px auto; /* Center with bottom margin */
+    padding: 0 20px; /* Add some horizontal padding */
 }
 
-.header-logo {
-    height: 80px; /* Fixed height for the logo */
-    width: auto; /* Maintain aspect ratio */
-    opacity: 0.5; /* More in the background */
+.main-logo-container {
+    display: flex;
+    justify-content: center; /* Center logo within its container */
+    flex-grow: 1; /* Allow it to take available space */
+}
+
+.main-header-logo {
+    height: 100px; /* Make it big */
+    width: auto;
+    filter: drop-shadow(0 0 10px #00ffff) drop-shadow(0 0 20px rgba(0, 255, 255, 0.4)); /* Prominent glow */
     transition: opacity 0.3s ease-in-out;
-    vertical-align: middle; /* Align with other nav items if any */
-    margin-bottom: 0;
-    margin-top: 0;
-    filter: drop-shadow(0 0 5px #00ffff); /* Subtle glow */
+}
+.main-header-logo:hover {
+    opacity: 0.9;
 }
 
-.header-logo:hover {
-    opacity: 0.8; /* Slightly more prominent on hover */
+/* Styles for the main navigation menu */
+.main-nav-menu {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center; /* Center the UL */
 }
 
-/* Ensure .logo in header handles spacing correctly if needed */
-nav .logo {
-    margin-right: 30px; /* Space between logo and nav links */
-    display: inline-block;
-    vertical-align: middle; /* Align with text */
-}
-
-nav ul {
+.main-nav-menu ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
+    justify-content: center; /* Center the list items */
     align-items: center;
-    /* justify-content: center; /* Removed as space-between on nav handles distribution */ */
-    /* margin-top: 20px; /* Removed for row layout */ */
 }
 
-nav ul li {
+.main-nav-menu ul li {
     margin: 0 25px;
 }
 
-nav ul li a {
+.main-nav-menu ul li a {
     text-decoration: none;
     color: #00ffff; /* Cyan accent */
     font-weight: bold;
@@ -91,26 +93,84 @@ nav ul li a {
     transition: color 0.3s, text-shadow 0.3s;
 }
 
-nav ul li a:hover {
+.main-nav-menu ul li a:hover {
     color: #ffff00; /* Yellow hover */
     text-shadow: 0 0 10px #ffff00;
 }
 
-/* Glowing Button Style */
+/* Adjust glowing button for its new position */
 .glowing-button {
     background-color: transparent;
     border: 2px solid #00ffff; /* Cyan border */
     color: #00ffff;
-    padding: 0.7rem 1.5rem;
-    font-size: 1rem;
+    padding: 0.5rem 1rem; /* Smaller padding */
+    font-size: 0.9rem; /* Slightly smaller font size */
     font-weight: bold;
     cursor: pointer;
     border-radius: 5px;
     box-shadow: 0 0 10px #00ffff;
     transition: all 0.3s ease-in-out;
     letter-spacing: 0.1em;
-    margin-left: auto; /* Push to the far right */
-    margin-top: 15px; /* Space from nav links */
+    /* margin-left: auto; /* Removed - handled by flexbox */ */
+    margin-top: 0; /* Remove top margin */
+}
+
+/* Old nav styles - now obsolete */
+nav {
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    /* width: 90%; */
+    /* max-width: 1200px; */
+    /* margin: 0 auto; */
+    display: block; /* Override to block for the main-nav-menu */
+}
+
+.header-logo {
+    /* height: 80px; */
+    /* width: auto; */
+    /* opacity: 0.5; */
+    /* transition: opacity 0.3s ease-in-out; */
+    /* vertical-align: middle; */
+    /* margin-bottom: 0; */
+    /* margin-top: 0; */
+    /* filter: drop-shadow(0 0 5px #00ffff); */
+}
+
+.header-logo:hover {
+    /* opacity: 0.8; */
+}
+
+nav .logo {
+    /* margin-right: 30px; */
+    /* display: inline-block; */
+    /* vertical-align: middle; */
+}
+
+nav ul {
+    /* list-style: none; */
+    /* margin: 0; */
+    /* padding: 0; */
+    /* display: flex; */
+    /* align-items: center; */
+}
+
+nav ul li {
+    /* margin: 0 25px; */
+}
+
+nav ul li a {
+    /* text-decoration: none; */
+    /* color: #00ffff; */
+    /* font-weight: bold; */
+    /* font-size: 1rem; */
+    /* transition: color 0.3s, text-shadow 0.3s; */
+}
+
+nav ul li a:hover {
+    /* color: #ffff00; */
+    /* text-shadow: 0 0 10px #ffff00; */
 }
 
 .glowing-button:hover {
@@ -337,37 +397,36 @@ p {
 }
 
 .logo-item {
-    height: 70px; /* Slightly larger height */
-    width: 180px; /* Slightly larger width */
+    height: 70px; /* Consistent height for logo containers */
+    width: 180px; /* Consistent width for logo containers */
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
-    background-color: rgba(255,255,255,0.05);
-    border: 1px solid #00ffff;
-    transition: all 0.3s ease-in-out; /* Transition all properties */
+    background-color: transparent; /* Make background fit site background */
+    border: 1px solid rgba(0, 255, 255, 0.1); /* Softer, subtle border */
+    transition: all 0.3s ease-in-out;
 }
 .logo-item:hover {
-    background-color: rgba(0, 255, 255, 0.15); /* More vibrant hover background */
-    border-color: #ffff00; /* Yellow border on hover */
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6); /* Add a subtle glow */
+    background-color: rgba(0, 255, 255, 0.05); /* Very subtle hover background */
+    border-color: #00ffff; /* Cyan border on hover */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.4); /* Softer glow */
     transform: translateY(-3px); /* Slight lift effect */
 }
 
 .logos img {
-    max-height: 100%;
-    max-width: 100%;
-    width: auto;
-    height: auto;
-    opacity: 0.7;
-    transition: opacity 0.3s, transform 0.3s; /* Add transform to transition */
-    mix-blend-mode: multiply; /* Make white backgrounds transparent over dark background */
+    height: 100%; /* Make image take full height of container */
+    width: 100%; /* Make image take full width of container */
+    object-fit: contain; /* Ensure image fits without cropping, maintaining aspect ratio */
+    opacity: 0.8; /* Slightly more visible by default */
+    transition: opacity 0.3s, transform 0.3s;
+    /* mix-blend-mode: multiply; /* Removed to avoid conflicts with transparent background */ */
 }
 
 .logos img:hover {
     opacity: 1;
     transform: scale(1.05); /* Slight scale on hover */
-    mix-blend-mode: normal; /* Reset blend mode on hover if needed for effect */
+    /* mix-blend-mode: normal; /* Removed */ */
 }
 
 
