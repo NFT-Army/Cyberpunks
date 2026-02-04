@@ -59,16 +59,17 @@ header {
 }
 
 .main-header-logo {
-    height: 80px; /* Restore original height */
+    height: 250px; /* Make it much bigger */
     width: auto;
-    opacity: 0.5; /* Restore original opacity */
-    filter: drop-shadow(0 0 5px #00ffff); /* Restore original subtle glow */
+    opacity: 1; /* Fully opaque now that image is transparent */
+    filter: none; /* Remove filter as image is transparent */
     transition: opacity 0.3s ease-in-out;
     border: none; /* Ensure no frame */
-    margin: 0; /* Remove any default margins */
+    margin: 0 auto; /* Center the logo itself if container allows */
+    display: block; /* Ensure block-level for margin auto to work */
 }
 .main-header-logo:hover {
-    opacity: 0.8; /* Slightly more prominent on hover */
+    opacity: 1; /* Stay opaque on hover */
 }
 
 /* Styles for the main navigation menu */
@@ -347,7 +348,9 @@ p {
     pointer-events: none; /* Make it unclickable */
 }
 
-/* Lighten Ledger logo */
+img[src*="WalletConnect.png"] {
+    filter: invert(1) hue-rotate(180deg) brightness(0.8); /* Invert and brighten for dark background */
+}
 img[src*="full-ledger-logo.svg"] {
     filter: invert(1) hue-rotate(180deg) brightness(0.8); /* Invert and brighten for dark background */
 }
