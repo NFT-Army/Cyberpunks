@@ -34,13 +34,15 @@ header {
     top: 0;
     left: 0;
     z-index: 999;
-    /* text-align: center; /* Removed as children will control alignment */ */
+    display: flex; /* Make header a flex container */
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center content horizontally */
 }
 
-/* New styles for the top part of the header (logo + button) */
-.header-top {
+/* Styles for the top part of the header (logo + button) */
+.header-content-top {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Center logo and button group */
     align-items: center;
     width: 90%;
     max-width: 1200px;
@@ -50,19 +52,23 @@ header {
 
 .main-logo-container {
     display: flex;
-    justify-content: center; /* Center logo within its container */
-    /* flex-grow: 1; /* Removed to prevent undesired stretching */ */
+    justify-content: flex-start; /* Align logo to the start of its container */
+    align-items: center;
+    flex-grow: 1; /* Allow it to take available space */
+    margin-right: auto; /* Push the button to the right */
 }
 
 .main-header-logo {
-    height: 150px; /* Make it much bigger */
+    height: 80px; /* Restore original height */
     width: auto;
-    opacity: 1; /* Make it fully visible */
-    filter: drop-shadow(0 0 15px #ff00ff) drop-shadow(0 0 30px rgba(255, 0, 255, 0.6)); /* Prominent magenta glow for impact */
+    opacity: 0.5; /* Restore original opacity */
+    filter: drop-shadow(0 0 5px #00ffff); /* Restore original subtle glow */
     transition: opacity 0.3s ease-in-out;
+    border: none; /* Ensure no frame */
+    margin: 0; /* Remove any default margins */
 }
 .main-header-logo:hover {
-    opacity: 0.9;
+    opacity: 0.8; /* Slightly more prominent on hover */
 }
 
 /* Styles for the main navigation menu */
@@ -112,9 +118,10 @@ header {
     box-shadow: 0 0 10px #00ffff;
     transition: all 0.3s ease-in-out;
     letter-spacing: 0.1em;
-    /* margin-left: auto; /* Removed - handled by flexbox */ */
     margin-top: 0; /* Remove top margin */
 }
+
+
 
 /* Old nav styles - now obsolete */
 nav {
@@ -262,8 +269,8 @@ nav ul li a:hover {
 }
 
 #collections {
-    margin: 2rem auto; /* Smaller top/bottom margin */
-    padding: 1.5rem; /* Smaller padding */
+    margin: 1rem auto; /* Even smaller top/bottom margin */
+    padding: 1rem; /* Even smaller padding */
     border: none; /* Remove border */
     box-shadow: none; /* Remove box-shadow */
     background-color: transparent; /* Make background transparent */
@@ -322,7 +329,29 @@ p {
     padding: 2rem;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
+    position: relative; /* For absolute positioning of background image */
+    overflow: hidden; /* Hide overflowing background image */
 }
+
+/* Styles for the Ethereum background logo */
+.ethereum-bg-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; /* Adjust size as needed */
+    height: auto;
+    opacity: 0.08; /* Very subtle */
+    z-index: 0; /* Ensure it's behind content */
+    object-fit: contain;
+    pointer-events: none; /* Make it unclickable */
+}
+
+/* Lighten Ledger logo */
+img[src*="full-ledger-logo.svg"] {
+    filter: invert(1) hue-rotate(180deg) brightness(0.8); /* Invert and brighten for dark background */
+}
+
 
 .army-item:hover {
     transform: translateY(-5px);
