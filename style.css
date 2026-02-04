@@ -24,16 +24,16 @@ body::before {
 }
 
 header {
-    background-color: #0d0d0d; /* Fully opaque black */
+    /* background-color: #0d0d0d; */ /* Fully opaque black */
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     padding: 20px 0;
     border-bottom: 1px solid #00ffff; /* Cyan accent */
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 999;
+    /* position: fixed; */
+    /* width: 100%; */
+    /* top: 0; */
+    /* left: 0; */
+    /* z-index: 999; */
     display: flex; /* Make header a flex container */
     flex-direction: column; /* Stack content vertically */
     align-items: center; /* Center content horizontally */
@@ -59,10 +59,8 @@ header {
 }
 
 .main-header-logo {
-    height: 250px; /* Reverted to be much bigger as requested */
-    width: auto;
-    opacity: 1; /* Fully opaque now that image is transparent */
-    filter: invert(1) hue-rotate(180deg) brightness(0.8); /* Apply filter to merge with dark background */
+    height: 500px; /* Made significantly bigger as requested */
+    filter: none; /* Removed filter to make it dark again */
     transition: opacity 0.3s ease-in-out;
     border: none; /* Ensure no frame */
     margin: 0 auto; /* Center the logo itself if container allows */
