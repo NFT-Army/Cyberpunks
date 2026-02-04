@@ -24,7 +24,7 @@ body::before {
 }
 
 header {
-    background-color: rgba(13, 13, 13, 0.8); /* Semi-transparent black */
+    background-color: #0d0d0d; /* Fully opaque black */
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     padding: 20px 0;
@@ -59,10 +59,10 @@ header {
 }
 
 .main-header-logo {
-    height: 250px; /* Make it much bigger */
+    height: 250px; /* Reverted to be much bigger as requested */
     width: auto;
     opacity: 1; /* Fully opaque now that image is transparent */
-    filter: none; /* Remove filter as image is transparent */
+    filter: invert(1) hue-rotate(180deg) brightness(0.8); /* Apply filter to merge with dark background */
     transition: opacity 0.3s ease-in-out;
     border: none; /* Ensure no frame */
     margin: 0 auto; /* Center the logo itself if container allows */
@@ -354,6 +354,20 @@ img[src*="WalletConnect.png"] {
 img[src*="full-ledger-logo.svg"] {
     filter: invert(1) hue-rotate(180deg) brightness(0.8); /* Invert and brighten for dark background */
 }
+
+/* New filters for other supported wallet logos to ensure visibility on dark background */
+img[src*="OpenSea-Full-Logo (light).svg"],
+img[src*="metamask-seeklogo.svg"],
+img[src*="Coinbase_Wordmark.svg"],
+img[src*="coinbase-new-2021-seeklogo.svg"],
+img[src*="full-binance-logo.svg"],
+img[src*="Trust Wallet New 2023.svg"],
+img[src*="LEDGER Wallet Logo Vector.svg"],
+img[src*="phantom_logo.svg"],
+img[src*="solflare_logo.svg"] {
+    filter: invert(1) hue-rotate(180deg) brightness(0.8);
+}
+
 
 
 .army-item:hover {
