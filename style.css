@@ -39,9 +39,9 @@ header {
 }
 
 .main-header-logo {
-    height: 300px;
+    height: 400px; /* Bigger */
     width: auto;
-    filter: none;
+    filter: brightness(50%); /* Darker */
     border: none;
     margin-bottom: 20px;
 }
