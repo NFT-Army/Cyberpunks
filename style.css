@@ -3,6 +3,7 @@ body {
     font-family: 'Orbitron', 'Rajdhani', 'Courier New', Courier, monospace;
     margin: 0;
     background-color: #0d0d0d; /* Near black background */
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxglj/AABiYw3cI1/3SAAAAABJRU5ErkJggg==');
     color: #f0f0f0; /* Light grey text */
     line-height: 1.6;
     font-size: 16px;
