@@ -9,73 +9,48 @@ body {
     text-transform: uppercase;
 }
 
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxglj/AABiYw3cI1/3SAAAAABJRU5ErkJggg=='); /* More subtle grid/noise */
-    background-repeat: repeat;
-    opacity: 0.05;
-    pointer-events: none;
-    z-index: -1;
-}
+
 
 header {
-    /* background-color: #0d0d0d; */ /* Fully opaque black */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     padding: 20px 0;
     border-bottom: 1px solid #00ffff; /* Cyan accent */
-    /* position: fixed; */
-    /* width: 100%; */
-    /* top: 0; */
-    /* left: 0; */
-    /* z-index: 999; */
-    display: flex; /* Make header a flex container */
-    flex-direction: column; /* Stack content vertically */
-    align-items: center; /* Center content horizontally */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: transparent;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
 }
 
-/* Styles for the top part of the header (logo + button) */
 .header-content-top {
     display: flex;
-    justify-content: center; /* Center logo and button group */
+    justify-content: space-between;
     align-items: center;
     width: 90%;
     max-width: 1200px;
-    margin: 0 auto 10px auto; /* Center with bottom margin */
-    padding: 0 20px; /* Add some horizontal padding */
 }
 
 .main-logo-container {
-    display: flex;
-    justify-content: flex-start; /* Align logo to the start of its container */
-    align-items: center;
-    flex-grow: 1; /* Allow it to take available space */
-    margin-right: auto; /* Push the button to the right */
+    text-align: center;
+    width: 100%;
 }
 
 .main-header-logo {
-    height: 500px; /* Made significantly bigger as requested */
-    filter: none; /* Removed filter to make it dark again */
-    transition: opacity 0.3s ease-in-out;
-    border: none; /* Ensure no frame */
-    margin: 0 auto; /* Center the logo itself if container allows */
-    display: block; /* Ensure block-level for margin auto to work */
-}
-.main-header-logo:hover {
-    opacity: 1; /* Stay opaque on hover */
+    height: 300px;
+    width: auto;
+    filter: none;
+    border: none;
+    margin-bottom: 20px;
 }
 
-/* Styles for the main navigation menu */
 .main-nav-menu {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center; /* Center the UL */
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .main-nav-menu ul {
@@ -83,8 +58,6 @@ header {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center; /* Center the list items */
-    align-items: center;
 }
 
 .main-nav-menu ul li {
@@ -104,7 +77,6 @@ header {
     text-shadow: 0 0 10px #ffff00;
 }
 
-/* Adjust glowing button for its new position */
 .glowing-button {
     background-color: transparent;
     border: 2px solid #00ffff; /* Cyan border */
@@ -117,67 +89,6 @@ header {
     box-shadow: 0 0 10px #00ffff;
     transition: all 0.3s ease-in-out;
     letter-spacing: 0.1em;
-    margin-top: 0; /* Remove top margin */
-}
-
-
-
-/* Old nav styles - now obsolete */
-nav {
-    /* display: flex; */
-    /* flex-direction: row; */
-    /* justify-content: space-between; */
-    /* align-items: center; */
-    /* width: 90%; */
-    /* max-width: 1200px; */
-    /* margin: 0 auto; */
-    display: block; /* Override to block for the main-nav-menu */
-}
-
-.header-logo {
-    /* height: 80px; */
-    /* width: auto; */
-    /* opacity: 0.5; */
-    /* transition: opacity 0.3s ease-in-out; */
-    /* vertical-align: middle; */
-    /* margin-bottom: 0; */
-    /* margin-top: 0; */
-    /* filter: drop-shadow(0 0 5px #00ffff); */
-}
-
-.header-logo:hover {
-    /* opacity: 0.8; */
-}
-
-nav .logo {
-    /* margin-right: 30px; */
-    /* display: inline-block; */
-    /* vertical-align: middle; */
-}
-
-nav ul {
-    /* list-style: none; */
-    /* margin: 0; */
-    /* padding: 0; */
-    /* display: flex; */
-    /* align-items: center; */
-}
-
-nav ul li {
-    /* margin: 0 25px; */
-}
-
-nav ul li a {
-    /* text-decoration: none; */
-    /* color: #00ffff; */
-    /* font-weight: bold; */
-    /* font-size: 1rem; */
-    /* transition: color 0.3s, text-shadow 0.3s; */
-}
-
-nav ul li a:hover {
-    /* color: #ffff00; */
-    /* text-shadow: 0 0 10px #ffff00; */
 }
 
 .glowing-button:hover {
@@ -200,8 +111,8 @@ nav ul li a:hover {
     text-align: center;
     position: relative;
     overflow: hidden;
-    padding-top: 250px; /* Adjust for much taller header */
-    background: #0d0d0d no-repeat center center; /* Background image removed */
+    padding-top: 380px;
+    background: #0d0d0d no-repeat center center;
     background-size: cover;
     border-bottom: 2px solid #00ffff;
 }
@@ -432,47 +343,7 @@ img[src*="solflare_logo.svg"] {
 }
 
 
-/* Supported By Section */
-.logos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
 
-.logo-item {
-    height: 70px; /* Consistent height for logo containers */
-    width: 180px; /* Consistent width for logo containers */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    background-color: transparent; /* Make background fit site background */
-    border: 1px solid rgba(0, 255, 255, 0.1); /* Softer, subtle border */
-    transition: all 0.3s ease-in-out;
-}
-.logo-item:hover {
-    background-color: rgba(0, 255, 255, 0.05); /* Very subtle hover background */
-    border-color: #00ffff; /* Cyan border on hover */
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.4); /* Softer glow */
-    transform: translateY(-3px); /* Slight lift effect */
-}
-
-.logos img {
-    height: 100%; /* Make image take full height of container */
-    width: 100%; /* Make image take full width of container */
-    object-fit: contain; /* Ensure image fits without cropping, maintaining aspect ratio */
-    opacity: 0.8; /* Slightly more visible by default */
-    transition: opacity 0.3s, transform 0.3s;
-    /* mix-blend-mode: multiply; /* Removed to avoid conflicts with transparent background */ */
-}
-
-.logos img:hover {
-    opacity: 1;
-    transform: scale(1.05); /* Slight scale on hover */
-    /* mix-blend-mode: normal; /* Removed */ */
-}
 
 
 /* Roadmap section */
